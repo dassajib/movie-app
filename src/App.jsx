@@ -1,9 +1,7 @@
+import AppRoutes from "./appRoutes/AppRoutes"
+
 function App() {
-  return (
-    <div className="text-7xl">
-      Project Init
-    </div>
-  )
+  return <AppRoutes />
 }
 
 export default App
