@@ -4,7 +4,7 @@ A responsive and animated movie watchlist app built with **React**, **Firebase A
 
 ## 🔗 Live Site
 
-👉 [View Live on Netlify](https://your-netlify-site-url.netlify.app)
+👉 [View Live on Netlify](https://movixapppp.netlify.app/movies)
 
 ---
 
