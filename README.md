@@ -2,10 +2,6 @@
 
 A responsive and animated movie watchlist app built with **React**, **Firebase Authentication**, **Firestore**, and the **TMDB API**. Users can search for movies, view details, and manage their personal watchlist with smooth page transitions and microinteractions.
 
-## 🔗 Live Site
-
-👉 [View Live on Netlify](https://movixapppp.netlify.app/movies)
-
 ---
 
 ## 🚀 Features
