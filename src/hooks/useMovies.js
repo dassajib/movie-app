@@ -38,19 +38,26 @@ export const useMovies = () => {
   }
 
   const handleSearch = async (query) => {
-    if (!query.trim()) return
+    if (!query.trim()) {
+      setError('Please enter a search term.')
+      setResults([])
+      return
+    }
     setError('')
     setLoading((prev) => ({ ...prev, search: true }))
     try {
       const data = await searchMovies(query)
       setResults(data)
+      if (data.length === 0) {
+        setError(`No results found for "${query}"`)
+      }
     } catch (err) {
       console.error(err)
       setError('Failed to fetch search results')
     } finally {
       setLoading((prev) => ({ ...prev, search: false }))
     }
-  }
+  }  
 
   useEffect(() => {
     loadPopular()

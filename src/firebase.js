@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCBW0Iakl_bXOoYmyiPxd6DvNOlol2w9AE",
-  authDomain: "movie-watchlist-f468c.firebaseapp.com",
-  projectId: "movie-watchlist-f468c",
-  storageBucket: "movie-watchlist-f468c.appspot.com",
-  messagingSenderId: "989420175873",
-  appId: "1:989420175873:web:1ed62f2287107d9b957600"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 }
 
 export const app = initializeApp(firebaseConfig)
