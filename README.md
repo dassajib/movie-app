@@ -40,7 +40,7 @@ A responsive and animated movie watchlist app built with **React**, **Firebase A
 2. Install dependencies
    npm install
 
-3. Create .env file
+3. **Create a .env file**
    VITE_TMDB_API_KEY=your_firebase_tmdb_api_key
    VITE_TMDB_BASE_URL=your_firebase_tmdb_base_key
    VITE_FIREBASE_API_KEY=your_firebase_api_key
@@ -51,10 +51,10 @@ A responsive and animated movie watchlist app built with **React**, **Firebase A
    VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
     VITE_TMDB_API_KEY=your_tmdb_api_key
 
-4. Run the app locally
+4. **run locally**
    npm run dev
 
-📬 Contact
+📬 **Contact**
 If you have questions or suggestions:
 💌 Email: sajibdas.sd@gmail.com
 
