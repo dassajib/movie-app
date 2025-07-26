@@ -68,11 +68,13 @@ const HomePage = () => {
               <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-5 border-b-2 border-blue-600 pb-2">
                 Search Results
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-                {results.map((movie) => (
-                  <MovieCard key={movie.id} movie={movie} />
-                ))}
-              </div>
+              {
+                results.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                  {results.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                  ))}
+                </div>
+              }
             </section>
           )}
         </>
@@ -85,11 +87,13 @@ const HomePage = () => {
             <FaFire size={24} className="text-orange-500" />
             Trending Movies
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {trending.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
+          {
+            trending.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+              {trending.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+              ))}
+            </div>
+          }
         </section>
       </ScrollAnimation>
 
@@ -100,11 +104,11 @@ const HomePage = () => {
             <BiSolidMoviePlay size={24} className="text-blue-600" />
             Popular Movies
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          {popular.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {popular.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
-          </div>
+          </div>}
         </section>
       </ScrollAnimation>
     </PageWrapper>
