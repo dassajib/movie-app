@@ -12,21 +12,54 @@ const axiosInstance = axios.create({
 
 export const fetchPopularMovies = async () => {
   const res = await axiosInstance.get('/movie/popular', {
-    params: { api_key: API_KEY, t: Date.now() }, // cache busting param
+    params: { api_key: API_KEY },
   })
   return res.data.results
 }
 
 export const fetchTrendingMovies = async () => {
   const res = await axiosInstance.get('/trending/movie/day', {
-    params: { api_key: API_KEY, t: Date.now() }, // cache busting param
+    params: { api_key: API_KEY },
   })
   return res.data.results
 }
 
 export const searchMovies = async (query) => {
   const res = await axiosInstance.get('/search/movie', {
-    params: { api_key: API_KEY, query, t: Date.now() }, // cache busting param
+    params: { api_key: API_KEY, query },
   })
   return res.data.results
 }
+
+// export const fetchPopularMovies = async () => {
+//   const res = await axiosInstance.get('/movie/popular', {
+//     params: { api_key: API_KEY },
+//     headers: {
+//       'Cache-Control': 'no-cache',
+//       Pragma: 'no-cache',
+//     },
+//   })
+//   return res.data.results
+// }
+
+// export const fetchTrendingMovies = async () => {
+//   const res = await axiosInstance.get('/trending/movie/day', {
+//     params: { api_key: API_KEY },
+//     headers: {
+//       'Cache-Control': 'no-cache',
+//       Pragma: 'no-cache',
+//     },
+//   })
+//   return res.data.results
+// }
+
+// export const searchMovies = async (query) => {
+//   const res = await axiosInstance.get('/search/movie', {
+//     params: { api_key: API_KEY, query },
+//     headers: {
+//       'Cache-Control': 'no-cache',
+//       Pragma: 'no-cache',
+//     },
+//   })
+//   return res.data.results
+// }
