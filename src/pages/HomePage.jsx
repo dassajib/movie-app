@@ -69,7 +69,7 @@ const HomePage = () => {
                 Search Results
               </h2>
               {
-                results.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                results?.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
                   {results.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                   ))}
@@ -89,7 +89,7 @@ const HomePage = () => {
           </h2>
           {
             trending.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-              {trending.map((movie) => (
+              {trending?.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
             </div>
@@ -105,7 +105,7 @@ const HomePage = () => {
             Popular Movies
           </h2>
           {popular.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {popular.map((movie) => (
+            {popular?.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>}
