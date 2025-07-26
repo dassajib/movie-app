@@ -88,8 +88,8 @@ const HomePage = () => {
             Trending Movies
           </h2>
           {
-            trending.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-              {trending?.map((movie) => (
+            trending?.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+              {trending.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
             </div>
@@ -104,8 +104,8 @@ const HomePage = () => {
             <BiSolidMoviePlay size={24} className="text-blue-600" />
             Popular Movies
           </h2>
-          {popular.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {popular?.map((movie) => (
+          {popular?.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+            {popular.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>}
