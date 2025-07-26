@@ -87,13 +87,15 @@ const HomePage = () => {
             <FaFire size={24} className="text-orange-500" />
             Trending Movies
           </h2>
-          {
-            trending?.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          {trending?.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
               {trending.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
             </div>
-          }
+          ) : (
+            <p>No trending movies found.</p>
+          )}
         </section>
       </ScrollAnimation>
 
@@ -104,11 +106,14 @@ const HomePage = () => {
             <BiSolidMoviePlay size={24} className="text-blue-600" />
             Popular Movies
           </h2>
-          {popular?.length > 0 && <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          {popular?.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {popular.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
-          </div>}
+          </div>
+            : (
+              <p>No popular movies found.</p>
+            )}
         </section>
       </ScrollAnimation>
     </PageWrapper>
