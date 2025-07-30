@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import toast from 'react-hot-toast'
 import { app } from '../firebase'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import toast from 'react-hot-toast'
 import PageWrapper from '../components/PageWrapper'
+import { getFirebaseAuthErrorMessage } from '../utils/errorMessages'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -20,7 +21,8 @@ const Login = () => {
       toast.success('Logged in successfully!')
       navigate('/movies')
     } catch (error) {
-      toast.error(error.message)
+      const errMessage = getFirebaseAuthErrorMessage(error.code)
+      toast.error(errMessage)
     }
   }
 

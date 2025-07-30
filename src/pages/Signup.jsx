@@ -5,6 +5,7 @@ import { app } from '../firebase'
 import toast from 'react-hot-toast'
 import PageWrapper from '../components/PageWrapper'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import { getFirebaseAuthErrorMessage } from '../utils/errorMessages'
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -20,7 +21,8 @@ const Signup = () => {
       toast.success('Account created successfully! Please log in.')
       navigate('/login')
     } catch (error) {
-      toast.error(error.message)
+      const errMessage = getFirebaseAuthErrorMessage(error.code)
+      toast.error(errMessage)
     }
   }
 
