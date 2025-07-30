@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 
-import { fetchPopularMovies, fetchTrendingMovies, searchMovies } from '../services/movieService'
+import {
+  fetchPopularMovies,
+  fetchTrendingMovies,
+  searchMovies,
+} from '../services/movieService'
 
 export const useMovies = () => {
   const [popular, setPopular] = useState([])
@@ -13,11 +17,18 @@ export const useMovies = () => {
   })
   const [error, setError] = useState('')
 
-  const loadPopular = async () => {
+  // pagination states
+  const [popularPage, setPopularPage] = useState(1)
+  const [trendingPage, setTrendingPage] = useState(1)
+  const [totalPopularPages, setTotalPopularPages] = useState(1)
+  const [totalTrendingPages, setTotalTrendingPages] = useState(1)
+
+  const loadPopular = async (page = 1) => {
     setLoading((prev) => ({ ...prev, popular: true }))
     try {
-      const data = await fetchPopularMovies()
-      setPopular(data)
+      const data = await fetchPopularMovies(page)
+      setPopular(data.results)
+      setTotalPopularPages(data.total_pages > 20 ? 20 : data.total_pages)
     } catch (err) {
       console.error(err)
     } finally {
@@ -25,11 +36,12 @@ export const useMovies = () => {
     }
   }
 
-  const loadTrending = async () => {
+  const loadTrending = async (page = 1) => {
     setLoading((prev) => ({ ...prev, trending: true }))
     try {
-      const data = await fetchTrendingMovies()
-      setTrending(data)
+      const data = await fetchTrendingMovies(page)
+      setTrending(data.results)
+      setTotalTrendingPages(data.total_pages > 20 ? 20 : data.total_pages)
     } catch (err) {
       console.error(err)
     } finally {
@@ -47,8 +59,8 @@ export const useMovies = () => {
     setLoading((prev) => ({ ...prev, search: true }))
     try {
       const data = await searchMovies(query)
-      setResults(data)
-      if (data.length === 0) {
+      setResults(data.results)
+      if (data.results.length === 0) {
         setError(`No results found for "${query}"`)
       }
     } catch (err) {
@@ -57,11 +69,21 @@ export const useMovies = () => {
     } finally {
       setLoading((prev) => ({ ...prev, search: false }))
     }
-  }  
+  }
+
+  // reload when page changes
+  useEffect(() => {
+    loadPopular(popularPage)
+  }, [popularPage])
 
   useEffect(() => {
-    loadPopular()
-    loadTrending()
+    loadTrending(trendingPage)
+  }, [trendingPage])
+
+  // initial load
+  useEffect(() => {
+    loadPopular(popularPage)
+    loadTrending(trendingPage)
   }, [])
 
   return {
@@ -71,5 +93,11 @@ export const useMovies = () => {
     loading,
     error,
     handleSearch,
+    popularPage,
+    trendingPage,
+    totalPopularPages,
+    totalTrendingPages,
+    setPopularPage,
+    setTrendingPage,
   }
 }

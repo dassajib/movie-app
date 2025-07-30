@@ -10,23 +10,32 @@ const axiosInstance = axios.create({
   },
 })
 
-export const fetchPopularMovies = async () => {
+export const fetchPopularMovies = async (page = 1) => {
   const res = await axiosInstance.get('/movie/popular', {
-    params: { api_key: API_KEY },
+    params: {
+      api_key: API_KEY,
+      page,
+    },
   })
-  return res.data.results
+  return res.data
 }
 
-export const fetchTrendingMovies = async () => {
+export const fetchTrendingMovies = async (page = 1) => {
   const res = await axiosInstance.get('/trending/movie/day', {
-    params: { api_key: API_KEY },
+    params: {
+      api_key: API_KEY,
+      page,
+    },
   })
-  return res.data.results
+  return res.data
 }
 
 export const searchMovies = async (query) => {
   const res = await axiosInstance.get('/search/movie', {
-    params: { api_key: API_KEY, query },
+    params: {
+      api_key: API_KEY,
+      query,
+    },
   })
-  return res.data.results
+  return res.data
 }
